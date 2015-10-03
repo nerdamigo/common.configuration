@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace NerdAmigo.Common.Configuration
 {
-    public class ConfigurationProvider<TConfig> : IConfigurationProvider<TConfig> where TConfig : ICloneable, new()
+    public class JsonConfigurationProvider<TConfig> : IConfigurationProvider<TConfig> where TConfig : ICloneable, new()
     {
 		private IPathMapper PathMapper;
 		private Type ConfigType;
 		private string ConfigFilePath;
 		private const string BasePath = "~/App_Data/Config";
 		private TConfig _CurrentConfiguration;
-		public ConfigurationProvider(IPathMapper PathMapper)
+		public JsonConfigurationProvider(IPathMapper PathMapper)
 		{
 			this.PathMapper = PathMapper;
 			this.ConfigType = typeof(TConfig);
