@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfigEnvironmentConfigurationNameResolver.cs" />
     <Compile Include="AppConfigEnvironmentNameResolver.cs" />
     <Compile Include="ConfigurationFile.cs" />
     <Compile Include="XmlConfigurationProvider.cs" />

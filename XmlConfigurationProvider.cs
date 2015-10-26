@@ -26,19 +26,19 @@ namespace NerdAmigo.Common.Configuration
 		//private string ConfigFilePath;
 		//private const string BasePath = "~/App_Data/Config";
 		public XmlConfigurationProvider(IFileStorageProvider<ConfigurationFile> aStorageProvider,
-			IEnvironmentNameResolver aEnvironmentNameResolver,
+			IEnvironmentConfigurationNameResolver aEnvironmentNameResolver,
 			IHostNameResolver aHostNameResolver)
 		{
 			this.mConfigType = typeof(TConfig);
 			this.mUpdateActions = new HashSet<Action<TConfig>>();
 			
 			//construct an object for the base, the environment, and the host
-			string tEnvironmentName = aEnvironmentNameResolver.GetEnvironmentName();
+			string tEnvironmentName = aEnvironmentNameResolver.GetConfigurationName();
 			string tHostName = aHostNameResolver.GetHostName();
 
-			this.mConfigFileBase = new ConfigurationFile(this.mConfigType, "base");
-			this.mConfigFileEnvironment = new ConfigurationFile(this.mConfigType, "environment", tEnvironmentName);
-			this.mConfigFileHostName = new ConfigurationFile(this.mConfigType, "host", tHostName);
+			this.mConfigFileBase = new ConfigurationFile(this.mConfigType, "baseConfiguration");
+			this.mConfigFileEnvironment = new ConfigurationFile(this.mConfigType, "environmentConfiguration", tEnvironmentName);
+			this.mConfigFileHostName = new ConfigurationFile(this.mConfigType, "hostConfiguration", tHostName);
 
 			this.mBaseStorageItem = aStorageProvider.GetStorageItemInfo(this.mConfigFileBase);
 			this.mEnvironmentStorageItem = aStorageProvider.GetStorageItemInfo(this.mConfigFileEnvironment);

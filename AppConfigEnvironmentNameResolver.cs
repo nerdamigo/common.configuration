@@ -13,7 +13,7 @@ namespace NerdAmigo.Common.Configuration
 		public string GetEnvironmentName()
 		{
 			var appSetting = ConfigurationManager.AppSettings["EnvironmentName"];
-			return appSetting;
+			return appSetting ?? "devEnv";
 		}
 	}
 }
